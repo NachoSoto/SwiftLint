@@ -136,10 +136,10 @@ public struct MissingDocsRule: OptInRule {
                 "/// docs\npublic struct C: A {\npublic let b: Int\n}",
             // locally-defined superclass member is documented, but subclass member is not
             "/// docs\npublic class A {\n/// docs\npublic func b() {}\n}\n" +
-                "/// docs\npublic class B: A { override public func b() {} }\n",
+                "/// docs\npublic class B: A { public override func b() {} }\n",
             // externally-defined superclass member is documented, but subclass member is not
             "import Foundation\n/// docs\npublic class B: NSObject {\n" +
-                "// no docs\noverride public var description: String { fatalError() } }\n"
+                "// no docs\npublic override var description: String { fatalError() } }\n"
         ],
         triggeringExamples: [
             // public, undocumented
